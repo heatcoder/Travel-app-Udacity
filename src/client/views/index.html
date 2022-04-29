@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>Document</title>
+</head>
+
+
+
+<body>
+    <div class="container">
+        <h1 class="travelPlanner">Travel Planner</h1>
+        <!--Form starts-->
+        <!--label for attribute and input id attribute is same to link label and input attribute or we can wrap input in the label-->
+        <div class="form-group">
+            <form id="form" >
+                <label for="Destination"> Please enter your Destination </label>
+                <input type="text" name="Destination" id="name" class="name" placeholder="Sydney" pattern="[A-z + a-Z + ^0-9*]" required>
+                
+                <label for="from"> From</label>
+                <input type="date" id="start-date" class="from" required>
+                
+                <label for="to">To</label>
+                <input type="date" id="to" class="to" required>
+                
+                <button type="submit" id="button">Plan</button>
+            </form>
+             <!--Message Box starts-->
+        <div class="result-container">
+            <div class="loader"></div>
+            <div id="errors" class="message_err"></div>
+            <div id="output" class="message_output"></div>
+        <!--Message Box Ends-->
+        </div>
+        </div>
+        <!--Form Ends-->   
+        
+    </div>
+
+   
+   
+
+    <script>
+        // Check that service workers are supported
+        if ('serviceWorker' in navigator) {
+            // Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>
+</body>
+</html>
