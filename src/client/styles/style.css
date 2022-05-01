@@ -24,7 +24,7 @@ body {
 .container {
    padding:40px;
     width: 60%;
-    height:700px;
+    height:800px;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -39,14 +39,16 @@ form {
     display: flex;
     flex-direction: column;
     align-items: left;
+    row-gap: 10px;
 }
   
 .form-group {
-    height: 500px;
+    height: 600px;
     font-size: 1em;
     align-items: center;
     display:flex;
     flex-direction: column;
+    
 }
 
 form {
@@ -131,9 +133,17 @@ button:focus {
 .result-container {
     margin-top:20px;
     width: 90%;
-    height:200px;
-    background-color: white;
-   display:flex;
+    height:300px;
+   display:grid;
+   padding:10px;
     border-radius: 10px;
     box-shadow: 0 5px 30px 10px rgba(0, 0, 0, 0.2);
+    flex-direction: row;
+    border-style: solid;
+    border: 1px #444cf7;
+}
+.para {
+    display:flex;
+    
+
 }
