@@ -8,10 +8,9 @@ Travel app developed for Udacity's Front End Developer Nano Degree courses capst
 * HTML MarkUp
 * Node JS back-end,
 * Express JS Framework,
-* Webpack as a build tool and asset bundler,
-* Dev server to 
 * CSS Grid and Flexbox for responsive styling,
 * Vanilla JS for Front-End and Server side,
+* Webpack as a build tool and asset bundler,
 * NPM as a package manager,
 
 
