@@ -76,7 +76,7 @@ app.post('/images', async function (req, res) {
         const downloadImage = await axios.get(`https://pixabay.com/api/?key=${pixKey}&q=${req.body.destination}&image_type=photo`)
         const {errorCode} = downloadImage.status;
         // console.log('STATUS of DOWNLOAD IMAGE', downloadImage.status)
-        if (errorCode === "OK") {
+        if (errorCode === "200") {
             const {data} = await downloadImage;
             const image = {webformatURL: data.hits[0].webformatURL}; 
             res.send(image);   
