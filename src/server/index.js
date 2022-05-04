@@ -47,8 +47,9 @@ app.post('/geo', async function (req, res) {
         const {data} = geoData;
         let latLng = {lng: data.geonames[0].lng,  lat: data.geonames[0].lat,  countryName: data.geonames[0].countryName};
         res.send(latLng);
-
+        console.log ('THIS IS THE DATA', data.geonames[0].lng)
     } catch (error) {
+    
         console.log("There was an error", error);
     }
 });
@@ -94,3 +95,4 @@ app.post('/images', async function (req, res) {
 });
 
 module.exports = app;
+
