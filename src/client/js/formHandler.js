@@ -41,7 +41,6 @@ async function handleSubmit(event) {
         const geoApiData = await geo.json();
         console.log('console log 3rd May',geoApiData);
        
-       
 
         /*for api call for weatherbit*/
         const weatherRes = await fetch("http://localhost:8081/weather", {
@@ -56,7 +55,7 @@ async function handleSubmit(event) {
         });
         const weatherData = await weatherRes.json();
         
-        console.log('this is final data:' , weatherData);
+        // console.log("THIS IS GEO ",geoApiData.lng )
 
 
         /*for api call for pixabay*/
@@ -70,10 +69,9 @@ async function handleSubmit(event) {
             },
             body: JSON.stringify({ city: destination, countryName: geoApiData.countryName }),
         });
+        console.log("THIS IS COUNTRYNAME" , geoApiData.countryName)
         const photoData = await photoRes.json();
-        console.log(photoData);
-
-
+    
         const data = [{ geoApiData }, { weatherData }, { city: destination }, { days: totalDays }, { photoData }]
 
         Client.innerHtml(data);
