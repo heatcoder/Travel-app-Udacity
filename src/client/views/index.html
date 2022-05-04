@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link href="../styles/style.scss" rel="stylesheet/scss" type="text/css"> -->
-    <link rel="stylesheet" href="../styles/style.css">
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap" rel="stylesheet">
+    <title>Travel Planner Project</title>
 </head>
 
 
@@ -15,38 +16,46 @@
     <div class="container">
         <h1 class="travelPlanner">Travel Planner</h1>
         <!--Form starts-->
-        <!--label for attribute and input id attribute is same to link label and input attribute or we can wrap input in the label-->
         <div class="form-group">
             <form id="form" >
-                <label for="Destination"> Please enter your Destination </label>
-                <input type="text" name="Destination" id="name" class="name" placeholder="Sydney" pattern="[A-z + a-Z + ^0-9*]" required>
+                <label for="Destination"> Enter your destination </label>
+                <input type="text" name="Destination" id="destination" class="destination" placeholder="Sydney" pattern="^[a-zA-Z ]*$" required>
                 
-                <label for="startDate"> From </label>
-                <input type="date" id="start-date" value="" valueAsNumber=""  class="from" required>
+                <label class="start" for="startDate"> From </label>
+                <input type="date" id="startDate" value="" valueAsNumber=""  class="from" required>
                 
-                <label for="endDate">End Date</label>
-                <input type="date" id="to" value="" valueAsNumber=""  class="to" required>
+                <label class="end" for="endDate">To</label>
+                <input type="date" id="endDate" value="" valueAsNumber=""  class="endDate" required>
                 
                 <button type="submit" id="button">Plan</button>
             </form>
-             <!--Message Box starts-->
-        <div class="result-container">
-            <p class="p1"> result 1</p>
-            <p class="p2"> result 2</p>
-            <p class="p3"> result 3</p>
-            <p class="p4"> result 4</p>
-            <p class="p5"> result 1</p>
-        <!--Message Box Ends-->
-        </div>
-        </div>
+            <!--Form Finishes-->
+
+            <!--Message Box starts-->
+            <section id=show>
+                <div id="final">
+                    <div > <p class="goingto">My trip to :</p></div>
+                    <div id="message"></div><br>
+                    <div id="forecast"></div>
+                    <div id="temp"></div>
+                    <div id="description"></div><br><br>
+                    <div ><img  id="imagePb" src="" /></div>
+                </div>
+            </section>
+            <!--Message Box finishes-->
+        <div>
+            
+       
         <!--Form Ends-->   
         
     </div>
 
    
-   
-<script src="../js/app.js"></script>
-    <!-- <script>
+
+    <div> <br> </div>
+    <footer>  </footer>
+
+    <script>
         // Check that service workers are supported
         if ('serviceWorker' in navigator) {
             // Use the window load event to keep the page load performant
@@ -54,6 +63,7 @@
                 navigator.serviceWorker.register('/service-worker.js');
             });
         }
-    </script> -->
+       </script>
 </body>
+
 </html>

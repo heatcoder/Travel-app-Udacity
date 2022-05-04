@@ -1,19 +1,20 @@
-//date for planning is limited with in 8 days from the chosen date.
+//calender dates limited by 12 days to match with the api weather prediction limit
+// Date entry and exit defined in order to select a date first then the exit date will  display days only after the entry date.
+
 function dateEntry () {
-    let date = new Date();
-    let allowedDaysLength = new Date((date.getTime() + (8 * (1000 * 60 * 60 * 24))));
-    let userInputdate = document.getElementById("start-date");
-    input.currentDateDeparture = new Date().toISOString().split("T")[0];
-    input.allowedDaysLength = allowedDaysLength.toISOString().split("T")[0];
-    }
-    
-    function dateExit () {
-        let startDate = document.getElementById('start-date');
-        startDate.addEventListener('blur', value)
-        function value() {
-            let newStartDate = document.getElementById("start-date").value;
-            let newEndDate = document.getElementById("to").currentDateDeparture = newStartDate;
-            console.log(newEndDate)
+    const today = new Date();
+    let max = new Date((today.getTime() + (12 * (1000 * 60 * 60 * 24))));
+    let maxDate = new Date(max)
+    let userInputdate = document.getElementById("startDate");
+    userInputdate.min = today.toISOString().split("T")[0];
+    userInputdate.max = maxDate.toISOString().split("T")[0];
+    console.log(today)
+   }
+   function dateExit () {
+        document.getElementById('startDate').addEventListener('blur', callback)
+        function callback() {
+        let newStartDate = document.getElementById("startDate").value;
+        let newEndDate = document.getElementById("endDate").min = newStartDate;
     }
 }
 dateExit(); window.onload = dateEntry();
