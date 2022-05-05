@@ -3,11 +3,11 @@
 
 function dateEntry () {
     const today = new Date();
-    let max = new Date((today.getTime() + (12 * (1000 * 60 * 60 * 24))));
-    let maxDate = new Date(max)
-    let userInputdate = document.getElementById("startDate");
-    userInputdate.min = today.toISOString().split("T")[0];
-    userInputdate.max = maxDate.toISOString().split("T")[0];
+    let allowed = new Date((today.getTime() + (12 * (1000 * 60 * 60 * 24))));
+    let maxiumumAllowed = new Date(allowed)
+    let userisoString = document.getElementById("startDate");
+    userisoString.min = today.toISOString().split("T")[0]; // changed time to iso string removed time
+    userisoString.max = maxiumumAllowed.toISOString().split("T")[0]; // 
     console.log(today)
    }
    function dateExit () {

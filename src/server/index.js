@@ -26,7 +26,7 @@ app.use(cors());
 
 
 //endpoint
-app.get('/', function(req, res) {
+app.get('/', function(req, res, next) {
     res.sendFile('dist/index.html')
 });
 
@@ -40,19 +40,28 @@ let weatherbit = process.env.WEATHERBIT;
 let pixKey = process.env.PIXABAY;
 let geoKey = process.env.GEOKEY;
 
+
+
 //Geonames.org API
-app.post('/geo', async function (req, res) {
+app.post('/geo', async function (req, res, next) {
     try {
         const geoData = await axios.post(`http://api.geonames.org/searchJSON?q=${req.body.city}&maxRows=1&username=${geoKey}`);       
         const {data} = geoData;
-        let latLng = {lng: data.geonames[0].lng,  lat: data.geonames[0].lat,  countryName: data.geonames[0].countryName};
+        let latLng = {lng: data.geonames[0].lng,  lat: data.geonames[0].lat,  countryName: data.geonames[0].countryName, errorCode: data.geonames};
         res.send(latLng);
-        console.log ('THIS IS THE DATA', data.geonames[0].lng)
     } catch (error) {
     
-        console.log("There was an error", error);
-    }
+        if (!res.data) {
+            next(new Error("user input for city is wrong !"));
+            return;
+        }
+        next(res);
+        res.send(data)
+        
+    } 
 });
+
+
 
 //Weatherbit API
 app.post('/weather', async function (req, res)  {

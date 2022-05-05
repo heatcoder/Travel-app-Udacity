@@ -1,6 +1,5 @@
-async function handleSubmit(event) {
+async function handleSubmit(event, error1) {
     event.preventDefault()
-
 
     //calculates the number of days remaining to the trip
     let startDate = document.getElementById("startDate").valueAsNumber;
@@ -23,12 +22,14 @@ async function handleSubmit(event) {
     }  else if (!destination) {
         alert('Please enter your destination!');
     } else if(!startDate || !endDate) {
-        alert('Please fill up the dates field')
+        alert('Please select the dates')
     }
     
     else{
         /*for api call for geonames*/
-        const geo = await fetch("http://localhost:8081/geo", {
+       
+          
+        const geo = await fetch("http://localhost:8081/geo",{
         method: "POST",
         mode: "cors",
         headers: {
@@ -38,10 +39,12 @@ async function handleSubmit(event) {
         },
         body: JSON.stringify({ city: destination }),
         });
+            // if ( geo.status === !200) {
+            //   alert('Please enter valid city')
+            // }  
         const geoApiData = await geo.json();
-        console.log('console log 3rd May',geoApiData);
-       
-
+        console.log('console log 3rd May',geo);
+        
         /*for api call for weatherbit*/
         const weatherRes = await fetch("http://localhost:8081/weather", {
             method: "POST",
@@ -55,8 +58,6 @@ async function handleSubmit(event) {
         });
         const weatherData = await weatherRes.json();
         
-        // console.log("THIS IS GEO ",geoApiData.lng )
-
 
         /*for api call for pixabay*/
         const photoRes = await fetch("http://localhost:8081/images", {
@@ -65,7 +66,7 @@ async function handleSubmit(event) {
         headers: {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
-              'Access-Control-Allow-Credentials': 'true',
+            'Access-Control-Allow-Credentials': 'true',
             },
             body: JSON.stringify({ city: destination, countryName: geoApiData.countryName }),
         });
@@ -75,9 +76,14 @@ async function handleSubmit(event) {
         const data = [{ geoApiData }, { weatherData }, { city: destination }, { days: totalDays }, { photoData }]
 
         Client.innerHtml(data);
+
+        console.log('THIS IS RAJEEV', data)
+        
     };
 
 };
+
+
    
 export {handleSubmit};
     

@@ -4,9 +4,10 @@ function innerHtml (data) {
     
     const daysof = (Math.round(data[3].days / (1000 * 60 * 60 * 24)) + 1);
     const city = JSON.stringify(data[2].city);
-
+    console.log('city before', data[2].city)
+    // used substring to select the first charactor to Capital
     const cityReg = `${city[1].toUpperCase(city)}${city.substring(2, (city.length -1)).toLowerCase(city)}`;
-
+    console.log('this is', cityReg)
     let message = document.querySelector("#message")
     message.innerHTML = `${cityReg}, ${data[0].geoApiData.countryName} in ${daysof} day / days.`;
 
